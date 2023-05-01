@@ -1,0 +1,58 @@
+# Set the name of the software and the product key
+$softwareName = "BITDEFENDER GRAVITYZONE"
+
+# Get the value of $env:Ninja_Location_Name
+$locationName = $env:Ninja_Location_Name
+
+# Get the names of the four package locations
+$location1Name = Ninja-Property-Docs-Get "Software" $softwareName package1Location
+$location2Name = Ninja-Property-Docs-Get "Software" $softwareName package2Location
+$location3Name = Ninja-Property-Docs-Get "Software" $softwareName package3Location
+$location4Name = Ninja-Property-Docs-Get "Software" $softwareName package4Location
+
+# Compare the location name to each of the package locations
+if ($locationName -eq $location1Name) {
+    # Check the autodeployment status of AutoDeploy1Status
+    $autoDeployStatus = Ninja-Property-Docs-Get "Software" $softwareName AutoDeploy1Status
+    if ($autoDeployStatus -match "Enabled") {
+        #Sets auto deploy field to enabled
+        Ninja-Property-Set autoDeployStatus 3a80c210-08bd-4c2d-8d34-4d04491caa79
+        
+    }
+    else {
+        Write-Host "Auto deployment has not been enabled for this location."
+    }
+}
+elseif ($locationName -eq $location2Name) {
+    # Check the autodeployment status of AutoDeploy2Status
+    $autoDeployStatus = Ninja-Property-Docs-Get "Software" $softwareName AutoDeploy2Status
+    if ($autoDeployStatus -match "Enabled") {
+        Ninja-Property-Set autoDeployStatus 3a80c210-08bd-4c2d-8d34-4d04491caa79
+    }
+    else {
+        Write-Host "Auto deployment has not been enabled for this location."
+    }
+}
+elseif ($locationName -eq $location3Name) {
+    # Check the autodeployment status of AutoDeploy3Status
+    $autoDeployStatus = Ninja-Property-Docs-Get "Software" $softwareName AutoDeploy3Status
+    if ($autoDeployStatus -match "Enabled") {
+        Ninja-Property-Set autoDeployStatus 3a80c210-08bd-4c2d-8d34-4d04491caa79
+    }
+    else {
+        Write-Host "Auto deployment has not been enabled for this location."
+    }
+}
+elseif ($locationName -eq $location4Name) {
+    # Check the autodeployment status of AutoDeploy4Status
+    $autoDeployStatus = Ninja-Property-Docs-Get "Software" $softwareName AutoDeploy4Status
+    if ($autoDeployStatus -match "Enabled") {
+        Ninja-Property-Set autoDeployStatus 3a80c210-08bd-4c2d-8d34-4d04491caa79
+    }
+    else {
+        Write-Host "Auto deployment has not been enabled for this location."
+    }
+}
+else {
+    Write-Host "Location does not match any package."
+}
