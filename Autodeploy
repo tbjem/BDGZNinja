@@ -166,7 +166,7 @@ if (!$?) {
 
 RMM-Msg "$(Get-Timestamp) Installed"
 RMM-Msg "$(Get-Timestamp) Cleaning up temp file..."
-Ninja-Property-Set autoDeployStatus 30e966b8-77a6-42a4-83a2-20a05637249d
+Ninja-Property-Set autoDeployStatus 30e966b8-77a6-42a4-83a2-20a05637249d 
 
 # Cleanup
 if (Test-Path -PathType Leaf -Path $tmpExe) {
